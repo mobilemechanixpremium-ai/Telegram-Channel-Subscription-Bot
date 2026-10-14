@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: mobilemechanix-subscription-bot
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: python bot.py
+    healthCheckPath: /health
+    envVars:
+      - key: BOT_TOKEN
+        sync: false
+      - key: MONGO_URI
+        sync: false
+      - key: ADMIN_ID
+        sync: false
+      - key: UPI_ID
+        sync: false
+      - key: CONTACT_USERNAME
+        sync: false
+      - key: DB_NAME
+        value: sub_management
+      - key: LOG_LEVEL
+        value: INFO
